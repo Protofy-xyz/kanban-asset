@@ -1,6 +1,5 @@
-import { Objects } from "app/bundles/objects";
+import { TagsModel } from "../../data/objects/tags";
 import { AutoActions, AutoAPI, getAuth, getServiceToken } from 'protonode'
-import { APIContext } from "protolib/bundles/apiContext"
 import { API, Protofy, getLogger } from "protobase";
 import { Application } from 'express';
 import fs from 'fs'
@@ -11,7 +10,7 @@ const logger = getLogger()
 
 Protofy("type", "AutoAPI")
 Protofy("object", "tags")
-const {name, prefix} = Objects.tags.getApiOptions()
+const {name, prefix} = TagsModel.getApiOptions()
 
 const initialData = {
     "202504-031251-01251-6599d856": {
@@ -33,18 +32,18 @@ const initialData = {
 
 const tagsAPI = AutoAPI({
     modelName: name,
-    modelType: Objects.tags,
+    modelType: TagsModel,
     initialData: initialData,
     prefix: prefix
 })
 
 const tagsActions = AutoActions({
     modelName: name,
-    modelType: Objects.tags,
+    modelType: TagsModel,
     prefix: prefix
 })
 
-export default Protofy("code", async (app:Application, context: typeof APIContext) => {
+export default Protofy("code", async (app:Application, context) => {
     tagsAPI(app, context)
     tagsActions(app, context)
     //you can add more apis here, like:

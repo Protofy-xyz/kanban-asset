@@ -1,0 +1,40 @@
+{
+    "name": "tickets",
+    "layouts": {
+        "lg": [
+            {
+                "w": 6,
+                "h": 19,
+                "x": 0,
+                "y": 0,
+                "i": "value_1750190981348",
+                "moved": false,
+                "static": false,
+                "isResizable": true
+            }
+        ],
+        "md": [
+            {
+                "i": "value_1750190981348",
+                "x": 0,
+                "y": 0,
+                "w": 2,
+                "h": 6,
+                "isResizable": true
+            }
+        ],
+        "sm": []
+    },
+    "cards": [
+        {
+            "key": "value_1750190981348",
+            "width": 2,
+            "height": 6,
+            "icon": "monitor-stop",
+            "html": "\n//data contains: data.value, data.icon and data.color\nreturn card({\n    content: `<iframe style=\"width: 100%;height:100%;\" src=\"/admin/tickets?mode=embed\" />`, padding: '3px'\n});\n",
+            "name": "Frame",
+            "description": "Display a link in an iframe",
+            "type": "value"
+        }
+    ]
+}

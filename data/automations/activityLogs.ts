@@ -1,6 +1,5 @@
-import { Objects } from "app/bundles/objects";
+import { ActivityLogsModel } from "../../data/objects/activityLogs";
 import { AutoActions, AutoAPI, getAuth, getServiceToken } from 'protonode'
-import { APIContext } from "protolib/bundles/apiContext"
 import { API, Protofy, getLogger } from "protobase";
 import { Application } from 'express';
 import fs from 'fs'
@@ -11,22 +10,22 @@ const logger = getLogger()
 
 Protofy("type", "AutoAPI")
 Protofy("object", "activityLogs")
-const {name, prefix} = Objects.activityLogs.getApiOptions()
+const {name, prefix} = ActivityLogsModel.getApiOptions()
 
 const activityLogsAPI = AutoAPI({
     modelName: name,
-    modelType: Objects.activityLogs,
+    modelType: ActivityLogsModel,
     initialData: {},
     prefix: prefix
 })
 
 const activityLogsActions = AutoActions({
     modelName: name,
-    modelType: Objects.activityLogs,
+    modelType: ActivityLogsModel,
     prefix: prefix
 })
 
-export default Protofy("code", async (app:Application, context: typeof APIContext) => {
+export default Protofy("code", async (app:Application, context) => {
     activityLogsAPI(app, context)
     activityLogsActions(app, context)
     //you can add more apis here, like:

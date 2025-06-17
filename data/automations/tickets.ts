@@ -1,18 +1,18 @@
-import { Objects } from "app/bundles/objects";
+import { TicketsModel } from "../../data/objects/tickets";
 import { AutoActions, AutoAPI, getAuth, getServiceToken } from 'protonode'
-import { APIContext } from "protolib/bundles/apiContext"
 import { API, Protofy, getLogger } from "protobase";
 import { Application } from 'express';
 import fs from 'fs'
 import path from "path";
 import moment from "moment";
+import { v4 as uuidv4 } from 'uuid';
 
 const root = path.join(process.cwd(), '..', '..')
 const logger = getLogger()
 
 Protofy("type", "AutoAPI")
 Protofy("object", "tickets")
-const { name, prefix } = Objects.tickets.getApiOptions()
+const { name, prefix } = TicketsModel.getApiOptions()
 
 const initialData = {
     "202504-031241-01251-6599d856": {
@@ -76,7 +76,7 @@ so that the system can learn and improve.`,
 
 const ticketsAPI = AutoAPI({
     modelName: name,
-    modelType: Objects.tickets,
+    modelType: TicketsModel,
     initialData: initialData,
     prefix: prefix,
     skipDatabaseIndexes: true,
@@ -147,11 +147,11 @@ const ticketsAPI = AutoAPI({
 
 const ticketsActions = AutoActions({
     modelName: name,
-    modelType: Objects.tickets,
+    modelType: TicketsModel,
     prefix: prefix
 })
 
-export default Protofy("code", async (app: Application, context: typeof APIContext) => {
+export default Protofy("code", async (app: Application, context) => {
     ticketsAPI(app, context)
     ticketsActions(app, context)
     //you can add more apis here, like:
