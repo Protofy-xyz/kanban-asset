@@ -2,8 +2,7 @@ import { Protofy, Schema, BaseSchema, getLogger, ProtoModel, SessionDataType, z 
 
 const logger = getLogger()
 Protofy("features", {
-    "AutoAPI": true,
-    "adminPage": "/admin/tags"
+    "AutoAPI": true
 })
 
 export const BaseTagsSchema = Schema.object(Protofy("schema", {

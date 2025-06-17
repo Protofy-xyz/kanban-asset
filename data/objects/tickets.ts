@@ -5,9 +5,7 @@ import { UserExtensionModel } from './userExtension';
 
 const logger = getLogger()
 Protofy("features", {
-    "AutoAPI": true,
-    "adminPage": "/tickets",
-    "undefinedPage": "/admin/tickets"
+    "AutoAPI": true
 })
 
 export const BaseTicketsSchema = Schema.object(Protofy("schema", {

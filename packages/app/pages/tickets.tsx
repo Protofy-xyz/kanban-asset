@@ -20,7 +20,6 @@ import { CollaboratorsSelector } from 'app/components/CollaboratorsSelector'
 import { CollaboratorImage } from 'app/components/CollaboratorImage'
 import { MultiSelectListPopover } from 'app/components/MultiSelectListPopover'
 import { SelectList } from 'protolib/components/SelectList'
-import Editable from 'react-contenteditable';
 
 const Icons = {}
 const isProtected = Protofy("protected", true)
@@ -29,12 +28,6 @@ const { name, prefix } = TicketsModel.getApiOptions()
 const apiUrl = prefix + name
 
 Protofy("object", "tickets")
-// Protofy("pageType", "admin")
-
-const ContentEditable = ({ ...props }: any) => <Editable
-    style={{ border: '2px dashed var(--blue8)' }}
-    {...props}
-/>
 
 const textComponent = ({ placeholder = "Text here", ...props }) => (path, data, setData, mode, originalData, setFormData) => {
     const [initialText, setInitialText] = useState(data)

@@ -21,7 +21,6 @@ const {name, prefix} = Objects.activityLogs.getApiOptions()
 const apiUrl = prefix + name
 
 Protofy("object", "activitylogs")
-Protofy("pageType", "admin")
 
 export default {
     route: Protofy("route", "/activityLogs"),

@@ -21,7 +21,6 @@ const {name, prefix} = Objects.tags.getApiOptions()
 const apiUrl = prefix + name
 
 Protofy("object", "tags")
-Protofy("pageType", "admin")
 
 export default {
     route: Protofy("route", "/tags"),
